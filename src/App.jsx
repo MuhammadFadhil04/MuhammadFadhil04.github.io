@@ -37,7 +37,7 @@ const projects = [
   },
   {
     number: "03",
-    category: "SYSTEM DESIGN",
+    category: "SYSTEM ANALYSIS",
     title: "Reservasi Lapangan Bulu Tangkis",
     description:
       "Perancangan sistem reservasi lapangan untuk membantu pelanggan melakukan pemesanan serta mendukung pengelolaan lapangan dan transaksi.",
@@ -182,7 +182,7 @@ function App() {
     "Semua",
     "AI / NLP",
     "WEB DEVELOPMENT",
-    "SYSTEM DESIGN",
+    "SYSTEM ANALYSIS",
     "DATA ANALYSIS",
   ];
 
