@@ -493,7 +493,7 @@ function App() {
 
           <p className="contact-description">
             Saya terbuka untuk peluang kerja, magang, dan kolaborasi
-            proyek yang relevan dengan pengembangan web, data, dan
+            proyek yang relevan dengan pengembangan web, data analyst, dan
             pengujian perangkat lunak.
           </p>
 
