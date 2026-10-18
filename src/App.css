@@ -1513,3 +1513,56 @@ html {
     display: none;
   }
 }
+
+
+/* Efek salju ringan di background */
+.snowfall {
+  position: fixed;
+  inset: 76px 0 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.snowflake {
+  position: absolute;
+  top: -12px;
+  display: block;
+  border-radius: 50%;
+  background: rgba(242, 245, 255, 0.9);
+  box-shadow: 0 0 9px rgba(128, 170, 255, 0.45);
+  animation: snowfall linear infinite;
+  will-change: transform;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translate3d(0, -12px, 0);
+  }
+
+  50% {
+    transform: translate3d(calc(var(--snow-drift) * -0.45), 50vh, 0);
+  }
+
+  100% {
+    transform: translate3d(var(--snow-drift), calc(100vh + 24px), 0);
+  }
+}
+
+main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .snowflake:nth-child(even) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snowfall {
+    display: none;
+  }
+}
