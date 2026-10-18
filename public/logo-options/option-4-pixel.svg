@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pixel tech logo">
+  <defs>
+    <linearGradient id="p" x1="11" y1="12" x2="53" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a9bbff"/>
+      <stop offset=".5" stop-color="#80aaff"/>
+      <stop offset="1" stop-color="#5ed6d0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0b1020"/>
+  <rect x="12" y="12" width="16" height="16" rx="3" fill="url(#p)"/>
+  <rect x="36" y="12" width="16" height="16" rx="3" fill="#80aaff" opacity=".55"/>
+  <rect x="12" y="36" width="16" height="16" rx="3" fill="#80aaff" opacity=".55"/>
+  <rect x="36" y="36" width="16" height="16" rx="3" fill="url(#p)"/>
+  <path d="M28 20h8M20 28v8M44 28v8M28 44h8" stroke="#0b1020" stroke-width="4" stroke-linecap="round"/>
+</svg>
