@@ -16,8 +16,8 @@ const projects = [
       "Integrasi model melalui Flask API",
       "Pengujian fungsionalitas chatbot",
     ],
-    link: "https://ratnadentalcare.my.id/",
-    linkLabel: "Lihat Website",
+    link: null,
+    linkLabel: "",
   },
   {
     number: "02",
