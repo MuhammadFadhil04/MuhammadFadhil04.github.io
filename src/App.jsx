@@ -191,7 +191,7 @@ function App() {
               </a>
               <a
                 className="button button-secondary"
-                href="/cv.pdf"
+                href={`${import.meta.env.BASE_URL}cv.pdf`}
                 download="CV-Muhammad-Fadhil.pdf"
               >
                 Download CV ↓
@@ -213,7 +213,7 @@ function App() {
             <div className="visual-orbit orbit-two" />
             <img
               className="profile-photo"
-              src="/profile.jpg"
+              src={`${import.meta.env.BASE_URL}profile.jpg`}
               alt="Foto profil Muhammad Fadhil Fadhil"
             />
             <div className="floating-card card-top">
