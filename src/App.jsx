@@ -22,7 +22,7 @@ const projects = [
   {
     number: "02",
     category: "WEB DEVELOPMENT",
-    title: "Website Reservasi Klinik Gigi",
+    title: "Website Reservasi Klinik Ratna Dental Care",
     description:
       "Sistem reservasi klinik gigi berbasis web untuk membantu pendaftaran pasien, pemesanan jadwal pemeriksaan, dan pengelolaan reservasi.",
     technologies: ["PHP", "MySQL", "JavaScript", "UML"],
