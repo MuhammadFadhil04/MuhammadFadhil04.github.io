@@ -533,31 +533,7 @@ function App() {
 
       
       <footer className="footer">
-        <a className="brand" href="#home">
-          MF<span>.</span>
-        </a>
-
         <p>© 2026 Muhammad Fadhil. All rights reserved.</p>
-
-        <div className="footer-links">
-          <a
-            href="https://www.linkedin.com/in/muhammad-fadhil-808bb5216/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn ↗
-          </a>
-
-          <a
-            href="https://github.com/fadhhiiillll"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub ↗
-          </a>
-
-          <a href="#home">Kembali ke atas ↑</a>
-        </div>
       </footer>
     </>
   );
