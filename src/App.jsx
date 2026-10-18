@@ -156,6 +156,8 @@ function App() {
 
   return (
     <>
+      <Snowfall />
+
       <div className="page-intro" aria-hidden="true">
         <div className="page-intro-logo">MF<span>.</span></div>
       </div>
