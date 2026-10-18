@@ -50,6 +50,28 @@ const projects = [
     link: null,
     linkLabel: "",
   },
+  {
+    number: "04",
+    category: "DATA ANALYSIS",
+    title: "Analisis Tingkat Kemiskinan di Indonesia",
+    description:
+      "Analisis data untuk melihat tingkat kemiskinan di Indonesia, membandingkan kondisi antarwilayah, dan mengidentifikasi daerah dengan tingkat kemiskinan tertinggi.",
+    technologies: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Data Visualization",
+      "Google Looker Studio",
+    ],
+    contribution: [
+      "Membersihkan dan mengolah data kemiskinan",
+      "Menganalisis perbandingan tingkat kemiskinan antarwilayah",
+      "Mengidentifikasi daerah dengan tingkat kemiskinan tertinggi",
+      "Membuat dashboard visualisasi interaktif di Google Looker Studio",
+    ],
+    link: null,
+    linkLabel: "",
+  },
 ];
 
 const skillGroups = [
@@ -156,7 +178,13 @@ function App() {
     return () => observer.disconnect();
   }, [activeFilter]);
 
-  const filters = ["Semua", "AI / NLP", "WEB DEVELOPMENT", "SYSTEM DESIGN"];
+  const filters = [
+    "Semua",
+    "AI / NLP",
+    "WEB DEVELOPMENT",
+    "SYSTEM DESIGN",
+    "DATA ANALYSIS",
+  ];
 
   const visibleProjects =
     activeFilter === "Semua"
