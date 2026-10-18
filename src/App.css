@@ -1444,3 +1444,72 @@ html {
     transform: none;
   }
 }
+
+
+/* Intro transition saat halaman pertama kali dibuka */
+.page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #0b1020;
+  pointer-events: none;
+  animation: introHide 0.1s ease 1.35s forwards;
+}
+
+.page-intro::after {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  content: "";
+  transform: translateY(100%);
+  animation: introSlide 0.8s cubic-bezier(0.77, 0, 0.18, 1) 0.28s forwards;
+}
+
+.page-intro-logo {
+  position: relative;
+  z-index: 1;
+  color: #f2f5ff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -5px;
+  animation: introLogo 0.7s ease both;
+}
+
+.page-intro-logo span {
+  color: var(--accent);
+}
+
+@keyframes introSlide {
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes introHide {
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes introLogo {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-intro {
+    display: none;
+  }
+}
