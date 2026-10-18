@@ -82,6 +82,37 @@ const skillGroups = [
   },
 ];
 
+const snowflakes = Array.from({ length: 36 }, (_, index) => ({
+  left: `${(index * 29) % 101}%`,
+  size: `${2 + (index % 4)}px`,
+  delay: `-${(index % 12) * 0.8}s`,
+  duration: `${8 + (index % 7)}s`,
+  opacity: 0.22 + (index % 5) * 0.1,
+  drift: `${((index % 5) - 2) * 28}px`,
+}));
+
+function Snowfall() {
+  return (
+    <div className="snowfall" aria-hidden="true">
+      {snowflakes.map((flake, index) => (
+        <span
+          className="snowflake"
+          key={index}
+          style={{
+            left: flake.left,
+            width: flake.size,
+            height: flake.size,
+            opacity: flake.opacity,
+            animationDelay: flake.delay,
+            animationDuration: flake.duration,
+            "--snow-drift": flake.drift,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Semua");
