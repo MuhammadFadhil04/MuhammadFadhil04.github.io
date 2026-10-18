@@ -537,7 +537,7 @@ function App() {
           MF<span>.</span>
         </a>
 
-        <p>© 2026 Muhammad Fadhil Fadhil. Personal Portfolio.</p>
+        <p>© 2026 Muhammad Fadhil. Personal Portofolio.</p>
 
         <div className="footer-links">
           <a
