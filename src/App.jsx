@@ -419,8 +419,10 @@ function App() {
                       <>AI<span> / NLP</span></>
                     ) : project.number === "02" ? (
                       <>WEB<span> / APP</span></>
-                    ) : (
+                    ) : project.number === "03" ? (
                       <>SYS<span> / UML</span></>
+                    ) : (
+                      <>DATA<span> / VIZ</span></>
                     )}
                   </div>
                 </div>
