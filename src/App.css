@@ -527,6 +527,12 @@
     linear-gradient(135deg, #292343, #10172a);
 }
 
+.art-04 {
+  background:
+    radial-gradient(circle at 70% 30%, #34706f 0, transparent 42%),
+    linear-gradient(135deg, #163c46, #101a2a);
+}
+
 .project-art::after {
   position: absolute;
   width: 230px;
