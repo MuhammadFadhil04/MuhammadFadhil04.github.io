@@ -71,13 +71,24 @@ const skillGroups = [
     ],
   },
   {
-    title: "Data & System Analysis",
+    title: "System Analysis",
     skills: [
-      "Microsoft Excel",
-      "Data Analysis",
       "UML Modeling",
       "System Analysis",
       "Database Design",
+      "Requirements Analysis",
+    ],
+  },
+  {
+    title: "Data Analysis",
+    skills: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Microsoft Excel",
+      "Data Cleaning",
+      "Data Visualization",
+      "Google Looker Studio",
     ],
   },
 ];
