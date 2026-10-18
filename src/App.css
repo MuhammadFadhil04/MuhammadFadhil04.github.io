@@ -1519,7 +1519,7 @@ html {
 .snowfall {
   position: fixed;
   inset: 76px 0 0;
-  z-index: 0;
+  z-index: 2;
   overflow: hidden;
   pointer-events: none;
 }
@@ -1529,8 +1529,8 @@ html {
   top: -12px;
   display: block;
   border-radius: 50%;
-  background: rgba(242, 245, 255, 0.9);
-  box-shadow: 0 0 9px rgba(128, 170, 255, 0.45);
+  background: #f2f5ff;
+  box-shadow: 0 0 10px rgba(128, 170, 255, 0.7);
   animation: snowfall linear infinite;
   will-change: transform;
 }
@@ -1552,7 +1552,7 @@ html {
 main,
 .footer {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 @media (max-width: 768px) {
