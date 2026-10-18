@@ -125,6 +125,10 @@ function App() {
 
   return (
     <>
+      <div className="page-intro" aria-hidden="true">
+        <div className="page-intro-logo">MF<span>.</span></div>
+      </div>
+
       <header className="navbar">
         <a className="brand" href="#home" onClick={closeMenu}>
           MF<span>.</span>
