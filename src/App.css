@@ -1567,3 +1567,174 @@ main,
     display: none;
   }
 }
+
+
+/* Motion polish tambahan */
+.availability {
+  animation: availabilityGlow 3s ease-in-out infinite;
+}
+
+.status-dot {
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes availabilityGlow {
+  0%, 100% {
+    border-color: var(--border);
+    box-shadow: 0 0 0 rgba(130, 170, 255, 0);
+  }
+  50% {
+    border-color: rgba(130, 170, 255, 0.38);
+    box-shadow: 0 0 22px rgba(130, 170, 255, 0.08);
+  }
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(128, 217, 174, 0.45);
+  }
+  50% {
+    transform: scale(1.22);
+    box-shadow: 0 0 15px rgba(128, 217, 174, 0.8);
+  }
+}
+
+.visual-orbit {
+  animation: orbitPulse 5s ease-in-out infinite;
+}
+
+.orbit-two {
+  animation-duration: 8s;
+  animation-direction: reverse;
+}
+
+@keyframes orbitPulse {
+  0%, 100% {
+    opacity: 0.32;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.025);
+  }
+}
+
+.floating-card {
+  animation: floatingCard 4.5s ease-in-out infinite;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-bottom {
+  animation-delay: -2.2s;
+}
+
+.floating-card:hover {
+  z-index: 4;
+  border-color: rgba(130, 170, 255, 0.6);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+  transform: translateY(-7px) scale(1.02);
+}
+
+@keyframes floatingCard {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.project-art {
+  transition:
+    transform 0.45s ease,
+    filter 0.45s ease;
+}
+
+.project-art::after {
+  transition:
+    transform 0.6s ease,
+    border-color 0.4s ease;
+}
+
+.project-card:hover .project-art {
+  filter: saturate(1.18) brightness(1.08);
+}
+
+.project-card:hover .project-art::after {
+  border-color: rgba(160, 190, 255, 0.22);
+  transform: scale(1.16) rotate(14deg);
+}
+
+.project-art-symbol {
+  transition:
+    transform 0.45s ease,
+    letter-spacing 0.45s ease;
+}
+
+.project-card:hover .project-art-symbol {
+  letter-spacing: -2px;
+  transform: scale(1.06);
+}
+
+.skill-tags span {
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.skill-tags span:hover {
+  border-color: rgba(130, 170, 255, 0.55);
+  background: rgba(130, 170, 255, 0.1);
+  color: var(--accent-bright);
+  transform: translateY(-3px);
+}
+
+.button-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.button-primary::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -45%;
+  width: 28%;
+  background: rgba(255, 255, 255, 0.32);
+  content: "";
+  transform: skewX(-18deg);
+  transition: left 0.55s ease;
+  z-index: -1;
+}
+
+.button-primary:hover::after {
+  left: 125%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .availability,
+  .status-dot,
+  .visual-orbit,
+  .floating-card,
+  .profile-photo {
+    animation: none !important;
+  }
+
+  .project-card:hover .project-art::after,
+  .project-card:hover .project-art-symbol,
+  .floating-card:hover,
+  .skill-tags span:hover {
+    transform: none;
+  }
+
+  .button-primary::after {
+    display: none;
+  }
+}
