@@ -72,6 +72,32 @@ const projects = [
     link: null,
     linkLabel: "",
   },
+  {
+    number: "05",
+    category: "AI / AUTOMATION",
+    title: "AI Business Operations Assistant",
+    description:
+      "Asisten operasional bisnis berbasis AI untuk membantu mengelola tugas, memahami prioritas pekerjaan, dan mendukung alur kerja otomatis melalui integrasi Gemini API dan n8n.",
+    technologies: [
+      "Python",
+      "FastAPI",
+      "SQLite",
+      "Gemini API",
+      "n8n",
+      "HTML",
+      "CSS",
+      "JavaScript",
+    ],
+    contribution: [
+      "Membangun REST API menggunakan FastAPI",
+      "Mengelola data tugas menggunakan SQLite",
+      "Mengintegrasikan Gemini API untuk fitur asisten AI",
+      "Menyiapkan integrasi otomatisasi melalui webhook n8n",
+      "Membuat antarmuka web menggunakan HTML, CSS, dan JavaScript",
+    ],
+    link: "https://github.com/MuhammadFadhil04/ai-business-operations-assistant",
+    linkLabel: "Lihat Source Code",
+  },
 ];
 
 const skillGroups = [
@@ -184,6 +210,7 @@ function App() {
     "WEB DEVELOPMENT",
     "SYSTEM ANALYSIS",
     "DATA ANALYSIS",
+    "AI / AUTOMATION",
   ];
 
   const visibleProjects =
@@ -421,8 +448,10 @@ function App() {
                       <>WEB<span> / APP</span></>
                     ) : project.number === "03" ? (
                       <>SYS<span> / UML</span></>
-                    ) : (
+                    ) : project.number === "04" ? (
                       <>DATA<span> / VIZ</span></>
+                    ) : (
+                      <>AI<span> / AUTO</span></>
                     )}
                   </div>
                 </div>
