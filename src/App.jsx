@@ -16,8 +16,9 @@ const projects = [
       "Integrasi model melalui Flask API",
       "Pengujian fungsionalitas chatbot",
     ],
-    link: null,
-    linkLabel: "",
+    link: "https://github.com/miftarzl/ratnadenrtalcare",
+    linkLabel: "Lihat Source Code",
+    status: "Demo online tidak tersedia karena domain kedaluwarsa.",
   },
   {
     number: "02",
@@ -32,8 +33,9 @@ const projects = [
       "Integrasi basis data",
       "Pengujian fungsionalitas sistem",
     ],
-    link: null,
-    linkLabel: "",
+    link: "https://github.com/miftarzl/ratnadenrtalcare",
+    linkLabel: "Lihat Source Code",
+    status: "Demo online tidak tersedia karena domain kedaluwarsa.",
   },
   {
     number: "03",
@@ -468,6 +470,9 @@ function App() {
                     ))}
                   </ul>
 
+                  {project.status && (
+                    <p className="project-status">{project.status}</p>
+                  )}
                   <div className="project-tech">
                     {project.technologies.map((tech) => (
                       <span key={tech}>{tech}</span>
@@ -534,6 +539,10 @@ function App() {
                   <p>{detail.description}</p>
                 </div>
               ))}
+
+              {selectedProject.status && (
+                <p className="project-status">{selectedProject.status}</p>
+              )}
 
               <h3>Teknologi</h3>
               <div className="project-tech">
