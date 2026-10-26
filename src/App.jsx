@@ -6,6 +6,7 @@ import "./App.css";
 const projects = [
   {
     number: "01",
+    slug: "chatbot-klinik-ratna-dental-care",
     category: "AI / NLP",
     title: "Chatbot Klinik Ratna Dental Care",
     description:
@@ -30,6 +31,7 @@ const projects = [
   },
   {
     number: "02",
+    slug: "website-reservasi-ratna-dental-care",
     category: "WEB DEVELOPMENT",
     title: "Website Reservasi Klinik Ratna Dental Care",
     description:
@@ -64,6 +66,7 @@ const projects = [
   },
   {
     number: "03",
+    slug: "reservasi-lapangan-bulu-tangkis",
     category: "SYSTEM ANALYSIS",
     title: "Reservasi Lapangan Bulu Tangkis",
     description:
@@ -80,6 +83,7 @@ const projects = [
   },
   {
     number: "04",
+    slug: "analisis-kemiskinan-indonesia",
     category: "DATA ANALYSIS",
     title: "Analisis Tingkat Kemiskinan di Indonesia",
     description:
@@ -103,6 +107,7 @@ const projects = [
   },
   {
     number: "05",
+    slug: "ai-business-operations-assistant",
     category: "AI / AUTOMATION",
     title: "AI Business Operations Assistant",
     description:
@@ -202,10 +207,131 @@ function Snowfall() {
   );
 }
 
+function ProjectDetailPage({ project }) {
+  const portfolioUrl = import.meta.env.BASE_URL;
+
+  if (!project) {
+    return (
+      <>
+        <Snowfall />
+        <header className="navbar project-page-navbar">
+          <a className="brand" href={portfolioUrl}>
+            MF<span>.</span>
+          </a>
+        </header>
+        <main className="project-detail-page project-not-found">
+          <p className="eyebrow">PROYEK TIDAK DITEMUKAN</p>
+          <h1>Halaman proyek tidak tersedia.</h1>
+          <a className="button button-primary" href={portfolioUrl}>
+            Kembali ke Portofolio
+          </a>
+        </main>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Snowfall />
+      <header className="navbar project-page-navbar">
+        <a className="brand" href={portfolioUrl}>
+          MF<span>.</span>
+        </a>
+        <a className="project-back-link" href={portfolioUrl}>
+          <span aria-hidden="true">←</span> Kembali ke Portofolio
+        </a>
+      </header>
+
+      <main className="project-detail-page">
+        <div className="project-detail-heading">
+          <p className="eyebrow">
+            {project.number} / {project.category}
+          </p>
+          <h1>{project.title}</h1>
+          <p className="project-detail-summary">{project.description}</p>
+        </div>
+
+        <div className="project-detail-columns">
+          <div className="project-detail-content">
+            <section className="project-page-gallery" aria-labelledby="gallery-title">
+              <h2 id="gallery-title">Galeri Proyek</h2>
+              {project.images?.length ? (
+                <div className="project-page-gallery-list">
+                  {project.images.map((image) => (
+                    <figure className="project-page-gallery-item" key={image.src}>
+                      <img
+                        src={`${portfolioUrl}${image.src}`}
+                        alt={image.alt}
+                        loading="lazy"
+                      />
+                      {image.caption && <figcaption>{image.caption}</figcaption>}
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <div className="project-gallery-empty">
+                  <span aria-hidden="true">▧</span>
+                  <p>Foto untuk proyek ini belum ditambahkan.</p>
+                </div>
+              )}
+            </section>
+
+            <section className="project-detail-section">
+              <h2>Kontribusi Utama</h2>
+              <ul className="project-detail-contributions">
+                {project.contribution.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+
+            {project.details?.length > 0 && (
+              <section className="project-detail-section">
+                <h2>Detail Proyek</h2>
+                {project.details.map((detail) => (
+                  <div className="project-detail-card" key={detail.title}>
+                    <h3>{detail.title}</h3>
+                    <p>{detail.description}</p>
+                  </div>
+                ))}
+              </section>
+            )}
+          </div>
+
+          <aside className="project-detail-sidebar">
+            <h2>Teknologi</h2>
+            <div className="project-tech">
+              {project.technologies.map((technology) => (
+                <span key={technology}>{technology}</span>
+              ))}
+            </div>
+
+            {project.status && <p className="project-status">{project.status}</p>}
+
+            {project.link && (
+              <a
+                className="button button-primary project-detail-source"
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {project.linkLabel || "Lihat Source Code"} <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </aside>
+        </div>
+      </main>
+
+      <footer className="footer">
+        <p>© 2026 Muhammad Fadhil. All rights reserved.</p>
+      </footer>
+    </>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Semua");
-  const [selectedProject, setSelectedProject] = useState(null);
   
   useEffect(() => {
     const elements = document.querySelectorAll(
@@ -234,24 +360,6 @@ function App() {
     return () => observer.disconnect();
   }, [activeFilter]);
 
-  useEffect(() => {
-    if (!selectedProject) return undefined;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") setSelectedProject(null);
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [selectedProject]);
-
   const filters = [
     "Semua",
     "AI / NLP",
@@ -267,6 +375,12 @@ function App() {
       : projects.filter((project) => project.category === activeFilter);
 
   const closeMenu = () => setMenuOpen(false);
+  const projectSlug = new URLSearchParams(window.location.search).get("project");
+
+  if (projectSlug) {
+    const project = projects.find((item) => item.slug === projectSlug);
+    return <ProjectDetailPage project={project} />;
+  }
 
   return (
     <>
@@ -485,11 +599,9 @@ function App() {
           <div className="projects-grid">
             {visibleProjects.map((project) => (
               <article className="project-card" key={project.number}>
-                <button
-                  type="button"
+                <a
                   className="project-card-trigger"
-                  onClick={() => setSelectedProject(project)}
-                  aria-haspopup="dialog"
+                  href={`${import.meta.env.BASE_URL}?project=${project.slug}`}
                   aria-label={`Lihat detail proyek: ${project.title}`}
                 >
                   <div className={`project-art art-${project.number}`}>
@@ -526,7 +638,7 @@ function App() {
                       Lihat detail dan foto proyek <span aria-hidden="true">↗</span>
                     </span>
                   </div>
-                </button>
+                </a>
 
                 {project.link && (
                   <a
@@ -543,103 +655,6 @@ function App() {
           </div>
         </section>
 
-        {selectedProject && (
-          <div
-            className="project-modal-overlay"
-            onClick={() => setSelectedProject(null)}
-          >
-            <section
-              className="project-modal"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="project-modal-title"
-              onClick={(event) => event.stopPropagation()}
-            >
-              <button
-                type="button"
-                className="project-modal-close"
-                onClick={() => setSelectedProject(null)}
-                aria-label="Tutup detail proyek"
-              >
-                ×
-              </button>
-
-              <p className="eyebrow">
-                {selectedProject.number} / {selectedProject.category}
-              </p>
-
-              <h2 id="project-modal-title">
-                {selectedProject.title}
-              </h2>
-
-              <p className="project-modal-description">{selectedProject.description}</p>
-
-              <h3>Foto Proyek</h3>
-              {selectedProject.images?.length ? (
-                <div className="project-gallery">
-                  {selectedProject.images.map((image) => (
-                    <figure className="project-gallery-item" key={image.src}>
-                      <img
-                        src={`${import.meta.env.BASE_URL}${image.src}`}
-                        alt={image.alt}
-                        loading="lazy"
-                      />
-                      {image.caption && <figcaption>{image.caption}</figcaption>}
-                    </figure>
-                  ))}
-                </div>
-              ) : (
-                <div className="project-gallery-empty">
-                  <span aria-hidden="true">▧</span>
-                  <p>Foto untuk proyek ini belum ditambahkan.</p>
-                </div>
-              )}
-
-              <h3>Kontribusi Utama</h3>
-              <ul>
-                {selectedProject.contribution.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-
-              {selectedProject.details?.length > 0 && (
-                <>
-                  <h3>Detail Proyek</h3>
-                  {selectedProject.details.map((detail) => (
-                    <div className="project-modal-detail" key={detail.title}>
-                      <h4>{detail.title}</h4>
-                      <p>{detail.description}</p>
-                    </div>
-                  ))}
-                </>
-              )}
-
-              {selectedProject.status && (
-                <p className="project-status">{selectedProject.status}</p>
-              )}
-
-              <h3>Teknologi</h3>
-              <div className="project-tech">
-                {selectedProject.technologies.map((tech) => (
-                  <span key={tech}>{tech}</span>
-                ))}
-              </div>
-
-              {selectedProject.link && (
-                <a
-                  className="project-link"
-                  href={selectedProject.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {selectedProject.linkLabel || "Lihat Proyek"} ↗
-                </a>
-              )}
-            </section>
-          </div>
-        )}
-
-        
         <section className="section contact-section" id="contact">
           <p className="eyebrow">04 / KONTAK</p>
           <h2>Mari terhubung.</h2>
