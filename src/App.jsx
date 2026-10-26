@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
+// Simpan screenshot di public/ lalu daftarkan path relatifnya di images.
 const projects = [
   {
     number: "01",
@@ -19,6 +20,13 @@ const projects = [
     link: "https://github.com/miftarzl/ratnadenrtalcare",
     linkLabel: "Lihat Source Code",
     status: "Demo online tidak tersedia karena domain kedaluwarsa.",
+    images: [
+      {
+        src: "ProjectChatbot.png",
+        alt: "Website Ratna Dental Care dengan panel chatbot klinik gigi",
+        caption: "Website Ratna Dental Care dan chatbot klinik gigi.",
+      },
+    ],
   },
   {
     number: "02",
@@ -36,6 +44,23 @@ const projects = [
     link: "https://github.com/miftarzl/ratnadenrtalcare",
     linkLabel: "Lihat Source Code",
     status: "Demo online tidak tersedia karena domain kedaluwarsa.",
+    images: [
+      {
+        src: "Screenshot 2026-10-26 133744.png",
+        alt: "Beranda website Ratna Dental Care dengan tombol reservasi dan chatbot",
+        caption: "Beranda website klinik.",
+      },
+      {
+        src: "Screenshot 2026-10-26 134023.png",
+        alt: "Daftar layanan perawatan gigi Ratna Dental Care",
+        caption: "Daftar layanan klinik.",
+      },
+      {
+        src: "Screenshot 2026-10-26 134040.png",
+        alt: "Tiga tahap alur reservasi dan kunjungan ke klinik",
+        caption: "Alur reservasi dan kunjungan.",
+      },
+    ],
   },
   {
     number: "03",
@@ -51,6 +76,7 @@ const projects = [
     ],
     link: null,
     linkLabel: "",
+    images: [],
   },
   {
     number: "04",
@@ -73,6 +99,7 @@ const projects = [
     ],
     link: null,
     linkLabel: "",
+    images: [],
   },
   {
     number: "05",
@@ -99,6 +126,7 @@ const projects = [
     ],
     link: "https://github.com/MuhammadFadhil04/ai-business-operations-assistant",
     linkLabel: "Lihat Source Code",
+    images: [],
   },
 ];
 
@@ -205,6 +233,24 @@ function App() {
 
     return () => observer.disconnect();
   }, [activeFilter]);
+
+  useEffect(() => {
+    if (!selectedProject) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setSelectedProject(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedProject]);
 
   const filters = [
     "Semua",
@@ -439,56 +485,59 @@ function App() {
           <div className="projects-grid">
             {visibleProjects.map((project) => (
               <article className="project-card" key={project.number}>
-                <div className={`project-art art-${project.number}`}>
-                  <span className="project-art-number">{project.number}</span>
-                  <span className="project-art-label">{project.category}</span>
-                  
-                  <div className="project-art-symbol">
-                    {project.number === "01" ? (
-                      <>AI<span> / NLP</span></>
-                    ) : project.number === "02" ? (
-                      <>WEB<span> / APP</span></>
-                    ) : project.number === "03" ? (
-                      <>SYS<span> / UML</span></>
-                    ) : project.number === "04" ? (
-                      <>DATA<span> / VIZ</span></>
-                    ) : (
-                      <>AI<span> / AUTO</span></>
-                    )}
+                <button
+                  type="button"
+                  className="project-card-trigger"
+                  onClick={() => setSelectedProject(project)}
+                  aria-haspopup="dialog"
+                  aria-label={`Lihat detail proyek: ${project.title}`}
+                >
+                  <div className={`project-art art-${project.number}`}>
+                    <span className="project-art-number">{project.number}</span>
+                    <span className="project-art-label">{project.category}</span>
+
+                    <div className="project-art-symbol">
+                      {project.number === "01" ? (
+                        <>AI<span> / NLP</span></>
+                      ) : project.number === "02" ? (
+                        <>WEB<span> / APP</span></>
+                      ) : project.number === "03" ? (
+                        <>SYS<span> / UML</span></>
+                      ) : project.number === "04" ? (
+                        <>DATA<span> / VIZ</span></>
+                      ) : (
+                        <>AI<span> / AUTO</span></>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                <div className="project-body">
-                  <p className="project-category">{project.category}</p>
-                  <h3>{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
+                  <div className="project-body">
+                    <p className="project-category">{project.category}</p>
+                    <h3>{project.title}</h3>
+                    <p className="project-description">{project.description}</p>
 
-                  <h4>Kontribusi utama</h4>
-                  <ul className="contribution-list">
-                    {project.contribution.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+                    <div className="project-tech">
+                      {project.technologies.map((tech) => (
+                        <span key={tech}>{tech}</span>
+                      ))}
+                    </div>
 
-                  {project.status && (
-                    <p className="project-status">{project.status}</p>
-                  )}
-                  <div className="project-tech">
-                    {project.technologies.map((tech) => (
-                      <span key={tech}>{tech}</span>
-                    ))}
+                    <span className="project-open-hint">
+                      Lihat detail dan foto proyek <span aria-hidden="true">↗</span>
+                    </span>
                   </div>
-                  {project.link && (
-                    <a
-                      className="project-link"
-                      href={project.link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {project.linkLabel} <span>↗</span>
-                    </a>
-                  )}
-                </div>
+                </button>
+
+                {project.link && (
+                  <a
+                    className="project-link project-card-source"
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {project.linkLabel} <span>↗</span>
+                  </a>
+                )}
               </article>
             ))}
           </div>
@@ -523,7 +572,28 @@ function App() {
                 {selectedProject.title}
               </h2>
 
-              <p>{selectedProject.description}</p>
+              <p className="project-modal-description">{selectedProject.description}</p>
+
+              <h3>Foto Proyek</h3>
+              {selectedProject.images?.length ? (
+                <div className="project-gallery">
+                  {selectedProject.images.map((image) => (
+                    <figure className="project-gallery-item" key={image.src}>
+                      <img
+                        src={`${import.meta.env.BASE_URL}${image.src}`}
+                        alt={image.alt}
+                        loading="lazy"
+                      />
+                      {image.caption && <figcaption>{image.caption}</figcaption>}
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <div className="project-gallery-empty">
+                  <span aria-hidden="true">▧</span>
+                  <p>Foto untuk proyek ini belum ditambahkan.</p>
+                </div>
+              )}
 
               <h3>Kontribusi Utama</h3>
               <ul>
@@ -532,13 +602,17 @@ function App() {
                 ))}
               </ul>
 
-              <h3>Detail Proyek</h3>
-              {selectedProject.details?.map((detail) => (
-                <div className="project-modal-detail" key={detail.title}>
-                  <h4>{detail.title}</h4>
-                  <p>{detail.description}</p>
-                </div>
-              ))}
+              {selectedProject.details?.length > 0 && (
+                <>
+                  <h3>Detail Proyek</h3>
+                  {selectedProject.details.map((detail) => (
+                    <div className="project-modal-detail" key={detail.title}>
+                      <h4>{detail.title}</h4>
+                      <p>{detail.description}</p>
+                    </div>
+                  ))}
+                </>
+              )}
 
               {selectedProject.status && (
                 <p className="project-status">{selectedProject.status}</p>
