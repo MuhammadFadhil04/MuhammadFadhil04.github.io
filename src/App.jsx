@@ -62,6 +62,41 @@ const projects = [
         alt: "Tiga tahap alur reservasi dan kunjungan ke klinik",
         caption: "Alur reservasi dan kunjungan.",
       },
+      {
+        src: "Screenshot 2026-10-26 140115.png",
+        alt: "Form login pasien untuk membuat reservasi dan melihat riwayat kunjungan",
+        caption: "Halaman login pasien.",
+      },
+      {
+        src: "Screenshot 2026-10-26 140129.png",
+        alt: "Form pendaftaran akun pasien baru",
+        caption: "Halaman pendaftaran akun pasien.",
+      },
+      {
+        src: "Screenshot 2026-10-26 140326.png",
+        alt: "Dashboard pasien setelah berhasil login",
+        caption: "Dashboard pasien setelah login.",
+      },
+      {
+        src: "Screenshot 2026-10-26 140234.png",
+        alt: "Form untuk memilih dokter, tanggal, dan waktu reservasi",
+        caption: "Form pembuatan reservasi.",
+      },
+      {
+        src: "Screenshot 2026-10-26 140248.png",
+        alt: "Riwayat reservasi pasien dengan status kunjungan dan antrean",
+        caption: "Riwayat dan status reservasi pasien.",
+      },
+      {
+        src: "Screenshot 2026-10-26 140315.png",
+        alt: "Halaman tentang Ratna Dental Care berisi visi dan misi klinik",
+        caption: "Halaman tentang klinik.",
+      },
+      {
+        src: "Screenshot 2026-10-26 140357.png",
+        alt: "Dashboard admin untuk mengelola dokter, reservasi, dan pasien",
+        caption: "Dashboard admin klinik.",
+      },
     ],
   },
   {
