@@ -166,7 +166,18 @@ const projects = [
     ],
     link: "https://github.com/MuhammadFadhil04/ai-business-operations-assistant",
     linkLabel: "Lihat Source Code",
-    images: [],
+    images: [
+      {
+        src: "Screenshot 2026-10-26 141959.png",
+        alt: "Dashboard AI Business Assistant dengan ringkasan tugas dan ruang percakapan AI",
+        caption: "Dashboard task management dan AI Assistant.",
+      },
+      {
+        src: "Screenshot 2026-10-26 142028.png",
+        alt: "Daftar tugas dengan pencarian, filter status, prioritas, dan kontrol tugas",
+        caption: "Daftar dan pengelolaan tugas.",
+      },
+    ],
   },
 ];
 
