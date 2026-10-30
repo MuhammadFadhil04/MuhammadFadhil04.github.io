@@ -18,6 +18,23 @@ const projects = [
       "Integrasi model melalui Flask API",
       "Pengujian fungsionalitas chatbot",
     ],
+    caseStudy: [
+      {
+        title: "Tantangan",
+        description:
+          "Pengunjung membutuhkan cara praktis untuk memperoleh informasi dasar klinik melalui percakapan di website.",
+      },
+      {
+        title: "Pendekatan",
+        description:
+          "Saya mengolah dataset intent, melatih dan mengevaluasi model IndoBERT, lalu menghubungkan model ke website melalui Flask API.",
+      },
+      {
+        title: "Hasil",
+        description:
+          "Proyek ini menghasilkan chatbot informasi klinik berbasis NLP yang terintegrasi dengan website.",
+      },
+    ],
     link: "https://github.com/miftarzl/ratnadenrtalcare",
     linkLabel: "Lihat Source Code",
     status: "Demo online tidak tersedia karena domain kedaluwarsa.",
@@ -42,6 +59,23 @@ const projects = [
       "Pengelolaan jadwal dan data reservasi",
       "Integrasi basis data",
       "Pengujian fungsionalitas sistem",
+    ],
+    caseStudy: [
+      {
+        title: "Tantangan",
+        description:
+          "Proses reservasi perlu mencakup pemilihan dokter dan jadwal, sementara admin perlu mengelola data klinik.",
+      },
+      {
+        title: "Pendekatan",
+        description:
+          "Saya membangun alur akun pasien, pemesanan jadwal, riwayat reservasi, serta dashboard admin dengan PHP dan MySQL.",
+      },
+      {
+        title: "Hasil",
+        description:
+          "Website menyediakan alur pasien dari pendaftaran hingga memantau status reservasi, disertai halaman admin untuk pengelolaan.",
+      },
     ],
     link: "https://github.com/miftarzl/ratnadenrtalcare",
     linkLabel: "Lihat Source Code",
@@ -112,6 +146,23 @@ const projects = [
       "Perancangan kebutuhan sistem",
       "Perancangan entitas User, Lapangan, dan Booking",
     ],
+    caseStudy: [
+      {
+        title: "Tantangan",
+        description:
+          "Alur pemesanan dan hubungan data pengguna, lapangan, serta booking perlu dirumuskan sebelum implementasi.",
+      },
+      {
+        title: "Pendekatan",
+        description:
+          "Saya menerjemahkan kebutuhan menjadi rancangan sistem dan data, dengan User, Lapangan, dan Booking sebagai entitas inti.",
+      },
+      {
+        title: "Hasil",
+        description:
+          "Proyek menghasilkan rancangan kebutuhan dan struktur data awal sebagai acuan untuk membangun sistem reservasi.",
+      },
+    ],
     link: null,
     linkLabel: "",
     images: [],
@@ -135,6 +186,23 @@ const projects = [
       "Menganalisis perbandingan tingkat kemiskinan antarwilayah",
       "Mengidentifikasi daerah dengan tingkat kemiskinan tertinggi",
       "Membuat dashboard visualisasi interaktif di Google Looker Studio",
+    ],
+    caseStudy: [
+      {
+        title: "Tantangan",
+        description:
+          "Perbedaan tingkat kemiskinan antarwilayah perlu dibaca dan dibandingkan dari data yang terstruktur.",
+      },
+      {
+        title: "Pendekatan",
+        description:
+          "Saya membersihkan data, membandingkan kondisi antarwilayah, dan menyusun visualisasi interaktif di Google Looker Studio.",
+      },
+      {
+        title: "Hasil",
+        description:
+          "Proyek menyajikan analisis perbandingan wilayah dan dashboard untuk menelusuri daerah dengan tingkat kemiskinan tertinggi.",
+      },
     ],
     link: null,
     linkLabel: "",
@@ -164,6 +232,23 @@ const projects = [
       "Menyiapkan integrasi otomatisasi melalui webhook n8n",
       "Membuat antarmuka web menggunakan HTML, CSS, dan JavaScript",
     ],
+    caseStudy: [
+      {
+        title: "Tantangan",
+        description:
+          "Tugas operasional dan prioritas pekerjaan perlu dikelola dalam alur yang mudah dipahami, dengan dukungan AI dan otomatisasi.",
+      },
+      {
+        title: "Pendekatan",
+        description:
+          "Saya membangun REST API dengan FastAPI, menyimpan tugas di SQLite, mengintegrasikan Gemini API, dan menyiapkan webhook n8n.",
+      },
+      {
+        title: "Hasil",
+        description:
+          "Prototipe ini menggabungkan pengelolaan tugas, bantuan AI, dan jalur integrasi otomatisasi dalam satu aplikasi.",
+      },
+    ],
     link: "https://github.com/MuhammadFadhil04/ai-business-operations-assistant",
     linkLabel: "Lihat Source Code",
     images: [
@@ -191,7 +276,7 @@ const skillGroups = [
     skills: ["Python", "NLP", "IndoBERT", "Flask API", "PyTorch"],
   },
   {
-    title: "Software Quality Assurance",
+    title: "Web Quality Practices",
     skills: [
       "Black Box Testing",
       "Functional Testing",
@@ -260,12 +345,19 @@ function ProjectDetailPage({ project }) {
     return (
       <>
         <Snowfall />
+        <a className="skip-link" href="#main-content">
+          Lewati ke konten utama
+        </a>
         <header className="navbar project-page-navbar">
           <a className="brand" href={portfolioUrl}>
             MF<span>.</span>
           </a>
         </header>
-        <main className="project-detail-page project-not-found">
+        <main
+          id="main-content"
+          className="project-detail-page project-not-found"
+          tabIndex={-1}
+        >
           <p className="eyebrow">PROYEK TIDAK DITEMUKAN</p>
           <h1>Halaman proyek tidak tersedia.</h1>
           <a className="button button-primary" href={portfolioUrl}>
@@ -279,6 +371,9 @@ function ProjectDetailPage({ project }) {
   return (
     <>
       <Snowfall />
+      <a className="skip-link" href="#main-content">
+        Lewati ke konten utama
+      </a>
       <header className="navbar project-page-navbar">
         <a className="brand" href={portfolioUrl}>
           MF<span>.</span>
@@ -288,7 +383,7 @@ function ProjectDetailPage({ project }) {
         </a>
       </header>
 
-      <main className="project-detail-page">
+      <main id="main-content" className="project-detail-page" tabIndex={-1}>
         <div className="project-detail-heading">
           <p className="eyebrow">
             {project.number} / {project.category}
@@ -296,6 +391,24 @@ function ProjectDetailPage({ project }) {
           <h1>{project.title}</h1>
           <p className="project-detail-summary">{project.description}</p>
         </div>
+
+        {project.caseStudy?.length > 0 && (
+          <section className="project-case-study" aria-labelledby="case-study-title">
+            <div className="project-case-study-heading">
+              <p className="eyebrow">STUDI KASUS</p>
+              <h2 id="case-study-title">Dari tantangan menuju solusi.</h2>
+            </div>
+            <div className="project-case-study-grid">
+              {project.caseStudy.map((step, index) => (
+                <article className="project-case-study-card" key={step.title}>
+                  <span className="project-case-study-step">0{index + 1}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="project-detail-columns">
           <div className="project-detail-content">
@@ -375,13 +488,37 @@ function ProjectDetailPage({ project }) {
   );
 }
 
+function updateProjectCardTilt(event) {
+  if (event.pointerType === "touch") return;
+
+  const card = event.currentTarget;
+  const bounds = card.getBoundingClientRect();
+  if (!bounds.width || !bounds.height) return;
+
+  const x = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
+  const y = Math.min(Math.max((event.clientY - bounds.top) / bounds.height, 0), 1);
+
+  card.style.setProperty("--project-tilt-x", `${((0.5 - y) * 6).toFixed(2)}deg`);
+  card.style.setProperty("--project-tilt-y", `${((x - 0.5) * 6).toFixed(2)}deg`);
+  card.style.setProperty("--project-spotlight-x", `${(x * 100).toFixed(1)}%`);
+  card.style.setProperty("--project-spotlight-y", `${(y * 100).toFixed(1)}%`);
+  card.classList.add("tilt-active");
+}
+
+function resetProjectCardTilt(event) {
+  const card = event.currentTarget;
+  card.style.setProperty("--project-tilt-x", "0deg");
+  card.style.setProperty("--project-tilt-y", "0deg");
+  card.classList.remove("tilt-active");
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Semua");
   
   useEffect(() => {
     const elements = document.querySelectorAll(
-      "main > section, .project-card, .skill-card"
+      "main > section, .project-card, .skill-card, .project-case-study-card"
     );
 
     const observer = new IntersectionObserver(
@@ -431,6 +568,9 @@ function App() {
   return (
     <>
       <Snowfall />
+      <a className="skip-link" href="#main-content">
+        Lewati ke konten utama
+      </a>
 
       <div className="page-intro" aria-hidden="true">
         <div className="page-intro-logo">MF<span>.</span></div>
@@ -468,7 +608,7 @@ function App() {
         </nav>
       </header>
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="hero section" id="home">
           <div className="hero-content">
             <div className="availability">
@@ -478,22 +618,22 @@ function App() {
 
             <p className="eyebrow">HALO, SAYA</p>
             <h1>
-              Muhammad Fadhil
+              Muhammad
               <br />
-              <span>Fadhil.</span>
+              <span>Fadhil</span>
             </h1>
 
             <h2>
               Information Systems Graduate
               <br />
-              <span>Web Developer · Data Enthusiast · QA Tester</span>
+              <span>Web Developer · API · Automasi</span>
             </h2>
 
             <p className="hero-description">
-              Saya tertarik membangun solusi digital melalui pengembangan
-              website, pengolahan data, dan pengujian perangkat lunak.
-              Saya senang mempelajari teknologi baru dan mengembangkan
-              aplikasi yang bermanfaat bagi pengguna.
+              Saya membangun aplikasi web yang membantu proses sehari-hari
+              menjadi lebih teratur, dari sistem reservasi hingga asisten
+              operasional. Fokus saya ada pada pengembangan fitur, integrasi
+              API, dan pengalaman pengguna.
             </p>
 
             <div className="hero-actions">
@@ -525,7 +665,7 @@ function App() {
             <img
               className="profile-photo"
               src={`${import.meta.env.BASE_URL}profile.jpg`}
-              alt="Foto profil Muhammad Fadhil Fadhil"
+              alt="Foto profil Muhammad Fadhil"
             />
             <div className="floating-card card-top">
               <span className="card-icon">{"</>"}</span>
@@ -535,10 +675,10 @@ function App() {
               </div>
             </div>
             <div className="floating-card card-bottom">
-              <span className="card-icon">AI</span>
+              <span className="card-icon">DA</span>
               <div>
-                <strong>AI & Quality Testing</strong>
-                <small>Learning through projects</small>
+                <strong>Data Analyst</strong>
+                <small>Analisis dan visualisasi data</small>
               </div>
             </div>
             <span className="visual-label">PORTOFOLIO · 2026</span>
@@ -561,10 +701,11 @@ function App() {
                 berbasis Natural Language Processing.
               </p>
               <p>
-                Saya ingin mengembangkan kemampuan di bidang Web
-                Development, Data Analysis, dan Software Quality
-                Assurance melalui pengalaman profesional dan proyek
-                yang menantang.
+                Saya ingin mengembangkan karier sebagai Web Developer,
+                terutama pada pengembangan fitur, antarmuka, dan integrasi
+                API. Pengalaman analisis data dan pengujian saya gunakan
+                sebagai bekal untuk membangun aplikasi yang lebih terstruktur
+                dan andal.
               </p>
             </div>
 
@@ -586,8 +727,8 @@ function App() {
               </div>
               <div>
                 <span>Fokus Karier</span>
-                <strong>Web · Data · QA</strong>
-                <small>Pengembangan dan pengujian sistem</small>
+                <strong>Web Developer</strong>
+                <small>Aplikasi web · API · automasi</small>
               </div>
             </div>
           </div>
@@ -598,8 +739,8 @@ function App() {
             <p className="eyebrow">02 / KETERAMPILAN</p>
             <h2>Tools yang saya gunakan.</h2>
             <p className="section-description">
-              Keterampilan yang saya pelajari dan gunakan dalam proyek
-              akademik maupun pengembangan sistem.
+              Keterampilan yang saya gunakan untuk membangun, menghubungkan,
+              dan menjaga kualitas aplikasi web.
             </p>
           </div>
 
@@ -624,7 +765,7 @@ function App() {
             <h2>Proyek yang pernah saya kerjakan.</h2>
             <p className="section-description">
               Beberapa proyek yang menunjukkan pengalaman saya dalam
-              pengembangan aplikasi, AI, pengujian, dan perancangan sistem.
+              pengembangan web, integrasi API, AI, dan perancangan sistem.
             </p>
           </div>
 
@@ -644,7 +785,12 @@ function App() {
 
           <div className="projects-grid">
             {visibleProjects.map((project) => (
-              <article className="project-card" key={project.number}>
+              <article
+                className="project-card"
+                key={project.number}
+                onPointerMove={updateProjectCardTilt}
+                onPointerLeave={resetProjectCardTilt}
+              >
                 <a
                   className="project-card-trigger"
                   href={`${import.meta.env.BASE_URL}?project=${project.slug}`}
@@ -707,8 +853,8 @@ function App() {
 
           <p className="contact-description">
             Saya terbuka untuk peluang kerja, magang, dan kolaborasi
-            proyek yang relevan dengan pengembangan web, data analyst, dan
-            pengujian perangkat lunak.
+            proyek, terutama di bidang pengembangan web, integrasi API,
+            dan automasi.
           </p>
 
           <div className="hero-actions">
@@ -754,3 +900,4 @@ function App() {
 }
 
 export default App;
+
